@@ -30,10 +30,6 @@ jobs:
       - name: terraform fmt
         id: fmt
         run: terraform fmt -check
-      - name: terraform init
-        run: terraform init 
-      - name: terraform validate
-        run: terraform validate 
       - name: Checkout README changes
         run: git pull
       # Generate the documentation for Terraform configuration
