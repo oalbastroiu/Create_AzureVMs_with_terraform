@@ -15,6 +15,14 @@ You need to configure the access for Terraform to the Azure subscription:
   tenant_id       = "XXXXX-XXXXX-XXXXXXXX-XXXXXXXX"
   
 
+## Backend
+
+The backend is configured to an Azure storage account so you need to provide the access variables in order to work:
+resource_group_name
+storage_account_name
+container_name
+key
+
 ## Usage
 
 To provision this example, populate `terraform.tfvars` with the [required variables](#inputs) and run the following commands within
