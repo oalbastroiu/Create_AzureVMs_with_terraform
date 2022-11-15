@@ -7,9 +7,13 @@ VMs pings each other to test the connectivity in a round robin fashion.
 Provider used to create the VMs is azurerm.
 You need to configure the access for Terraform to the Azure subscription:
   subscription_id = "XXXXX-XXXXX-XXXXXXXX-XXXXXXXX"
+  
   client_id       = "XXXXX-XXXXX-XXXXXXXX-XXXXXXXX"
+  
   client_secret   = "XXXXX-XXXXX-XXXXXXXX-XXXXXXXX"
+  
   tenant_id       = "XXXXX-XXXXX-XXXXXXXX-XXXXXXXX"
+  
 
 ## Usage
 
