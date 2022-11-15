@@ -35,7 +35,7 @@ jobs:
       - name: terraform validate
         run: terraform validate 
       - name: Checkout README changes
-        run: git pull origin master 
+        run: git pull
       # Generate the documentation for Terraform configuration
       - name: Render terraform docs inside the README.md and push changes back to PR branch
         uses: terraform-docs/gh-actions@v1.0.0
