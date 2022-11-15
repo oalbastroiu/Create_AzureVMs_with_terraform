@@ -1,0 +1,44 @@
+name: 'Terraform CI'
+
+on:
+  push:
+
+jobs:
+  terraform:
+    name: terraform
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ matrix.environment }}
+    strategy:
+      max-parallel: 1
+      matrix:
+        environment: [terraform]
+        include:
+          - environment: terraform
+            working_dir: terraform
+    permissions:
+      contents: 'write'
+      id-token: 'write'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+      - name: terraform fmt
+        id: fmt
+        run: terraform fmt -check
+      - name: terraform validate
+        run: terraform validate 
+      - name: Checkout README changes
+        run: git pull origin master 
+      # Generate the documentation for Terraform configuration
+      - name: Render terraform docs inside the README.md and push changes back to PR branch
+        uses: terraform-docs/gh-actions@v1.0.0
+        with:
+          working-dir:  '${{ matrix.working_dir }}'
+          output-file: README.md
+          output-method: inject
+          git-push: "true"
